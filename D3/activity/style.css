@@ -1,68 +1,94 @@
-.home{
-    margin: 0 auto; /*Centers the container horizontally*/
-    max-width: 1000px;/* Set max width of 900 pixels*/
-    padding: 20px;
+.container {
+    margin: 0 auto; /* Centers the container horizontally */
+    max-width: 100%; /* Set max width of 1000 pixels */
+    padding: 150px;
     font-family: Arial, sans-serif;
-
 }
 
-.navbar{
+.navbar {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     padding: 15px;
+    font-family: Arial, sans-serif;
 }
 
-.logo{
-    color:black;
+.logo {
+    color: black;
     font-size: 1.5em;
     font-weight: bold;
     text-decoration: none;
     margin-right: auto;
-
 }
 
-.nav-links{
+.nav-links {
     list-style: none;
     display: flex;
-    gap:15px;
+    gap: 15px;
     flex-grow: 1;
     justify-content: center;
+}
 
+.nav-links li {
+    margin: 0;
 }
-.nav-links li{
-    margin:0;
-}
-.nav-links a{
-    color:black;
+
+.nav-links a {
+    color: black;
     text-decoration: none;
     font-weight: bold;
 }
 
-.nav-links a:hover{
-    color:#0073e6;
+.nav-links a:hover {
+    color: #0073e6;
 }
 
-.widget{
+.widget {
     list-style: none;
     display: flex;
     gap: 10px;
-
 }
 
-.text-section{
-    max-width: 50%;
+.home {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between text and image */
+    padding: 20px;
 }
-.text-section p{
+
+.text-section {
+    flex: 1;
+    max-width: 50%; /* Limit width to allow space for image */
+}
+
+.text-section h1 {
+    font-size: 3.5em; /* Adjust size as needed */
+    line-height: 1.2; /* Optional: improve spacing between lines */
+}
+
+.text-section p {
+    text-indent: 10;
     font-size: small;
 }
 
-.order-button{
+.order-button {
     background-color: #ff6347;
-    color:white;
+    color: white;
     padding: 10px 20px;
     border-radius: 5px;
     font-weight: bold;
     text-decoration: none;
+}
+
+.image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center the image inside the section */
+}
+
+.image-section img {
+    max-width: 100%; /* Allow image to be responsive */
+    height: auto;
+    display: block;
 }
