@@ -1,7 +1,8 @@
 <html>
   <head>
-    <title>Home</title>
+    <title>Food</title>
     <link rel="stylesheet" href="style.css" />
+    
   </head>
   <body>
     <nav class="navbar">
@@ -242,27 +243,73 @@
           </p>
         </div>
       </section>
-      <h2 style="text-align: center">
-        <span class="underline">Order</span> Now
-      </h2>
-      <section class="order-left" id="order">
-        <div class="order-left">
-          <div>
-            <img src="/D3/activity/images/order_image.png" class="order-left" />
-          </div>
 
-          <label> Name </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            placeholder="Your name"
-          />
+      <section id="order" class="order-section">
+        <h2>Order Now</h2>
+        <div class="order-container">
+          <div class="order-image">
+            <img src="/D3/activity/images/order_image.png" alt="Order Image" />
+          </div>
+          <div class="order-form">
+            <form>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Your email" required />
+                </div>
+              </div>
+      
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="number">Number</label>
+                  <input type="text" id="number" name="number" placeholder="Your number" required />
+                </div>
+                <div class="form-group">
+                  <label for="quantity">How Much</label>
+                  <input type="number" id="quantity" name="quantity" placeholder="How many orders" required />
+                </div>
+              </div>
+      
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="order">You Order</label>
+                  <input type="text" id="order" name="order" placeholder="Your order" required />
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" id="address" name="address" placeholder="Your address" required />
+                </div>
+              </div>
+      
+              <button type="submit" class="order-button">Order Now</button>
+            </form>
+          </div>
         </div>
       </section>
-      <h1 id="team" style="text-align: center">Our Team</h1>
-      <section class="team"></section>
+      
+      
+      <h1 id="team" style="text-align: center"><span style="color: rgba(255, 255, 0, 0.671)">Our</span> Team</h1>
+      
+      <section class="team full-screen">
+          <div class="team-member">
+              <img src="/D3/activity/images/chef1.png" alt="Chef 1">
+          </div>
+          <div class="team-member">
+              <img src="/D3/activity/images/chef2.png" alt="Chef 2">
+          </div>
+          <div class="team-member">
+              <img src="/D3/activity/images/chef3.jpg" alt="Chef 3">
+          </div>
+          <div class="team-member">
+              <img src="/D3/activity/images/chef4.jpg" alt="Chef 4">
+          </div>
+      </section>
+      
+      
     </div>
   </body>
 
@@ -299,7 +346,7 @@
           </ul>
         </div>
         <div class="footer-item">
-          <h3>Our Services</h3>
+          <h3>Our Service</h3>
           <ul class="footer-list">
             <li>Fast Delivery</li>
             <li>Easy Payments</li>
@@ -308,14 +355,18 @@
         </div>
         <div class="footer-item">
           <h3>Follows</h3>
-          <ul>
-            <li><i>Facebook</i></li>
-            <li><i>Twitter</i></li>
-            <li><i>Instagram</i></li>
-            <li><i>Linkedin</i></li>
+          <ul class="social-icons">
+            <li><i class="fab fa-facebook-f"></i> Facebook</li>
+            <li><i class="fab fa-twitter"></i> Twitter</li>
+            <li><i class="fab fa-instagram"></i> Instagram</li>
+            <li><i class="fab fa-linkedin-in"></i> LinkedIn</li>
           </ul>
         </div>
       </div>
+      <div class="footer-bottom text-center">
+        <p>Design by © WT Master Code</p>
+      </div>
     </section>
   </footer>
+  
 </html>
