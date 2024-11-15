@@ -28,6 +28,6 @@ function calculateLoan(event){
     
     const result= document.getElementById('result');
    // newParagraph.textContent=`Monthly Payment : ${monthlyLoan}`;
-    result.textContent=`Monthly Payment: $${monthlyPayment}`;
+    result.textContent=`Monthly Payment: $${monthlyPayment.toFixed(2)}`;
 }
 
