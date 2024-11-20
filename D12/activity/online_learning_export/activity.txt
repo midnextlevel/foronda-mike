@@ -1,0 +1,157 @@
+
+Retrieve all courses in the "Programming" category.
+db.Courses.find({"category": ObjectId("673ddaf4a714bc094fc89638")})
+
+
+Retrieve all students enrolled in the course "Introduction to MongoDB".
+db.Courses.findOne({ "title": "Introduction to MongoDB" }).students
+
+Retrieve course details, including category and instructor information, for all courses.
+db.Courses.aggregate([
+  {
+    $lookup: {
+      from: "Categories",
+      localField: "category",
+      foreignField: "_id",
+      as: "categoryDetails"
+    }
+  },
+  {
+    $lookup: {
+      from: "Instructors",
+      localField: "instructor",
+      foreignField: "_id",
+      as: "instructorDetails"
+    }
+  }
+])
+
+Retrieve all reviews for the course "Data Science with Python," including the details of the students who wrote them.
+
+db.Courses.aggregate([
+  { $match: { "title": "Data Science with Python" } },
+  { $unwind: "$reviews" },
+  {
+    $lookup: {
+      from: "Students",
+      localField: "students",
+      foreignField: "_id",
+      as: "studentDetails"
+    }
+  }
+])
+
+Find the average rating for each course.
+db.Courses.aggregate([
+  { $unwind: "$reviews" },
+  { $group: { _id: "$title", averageRating: { $avg: "$reviews.rating" } } }
+])
+
+Retrieve all courses taught by the instructor "Jane Doe".
+db.Courses.aggregate([
+  {
+    $lookup: {
+      from: "Instructors",
+      localField: "instructor",
+      foreignField: "_id",
+      as: "instructorDetails"
+    }
+  },
+  { $match: { "instructorDetails.name": "Jane Doe" } },
+  {
+    $project: {
+      title: 1,
+      description: 1,
+      _id: 0
+    }
+  }
+])
+
+Count the number of courses in each category.
+
+db.courses.aggregate([
+  {
+    $lookup: {
+      from: "categories",
+      localField: "category",
+      foreignField: "_id",
+      as: "categoryDetails"
+    }
+  },
+  {
+    $unwind: "$categoryDetails"
+  },
+  {
+    $group: {
+      _id: "$categoryDetails.name",
+      courseCount: { $sum: 1 }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      category: "$_id",
+      courseCount: 1
+    }
+  }
+])
+
+Find all students who have reviewed the course "Introduction to MongoDB".
+db.Courses.aggregate([
+  { $match: { title: "Introduction to MongoDB" } },
+  {
+    $lookup: {
+      from: "Students",
+      localField: "students",
+      foreignField: "_id",
+      as: "studentDetails"
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      courseName: "$title", 
+      studentNames: "$studentDetails.name"
+    }
+  }
+])
+
+
+Retrieve the titles of all courses where the average rating is above 4.
+db.Courses.aggregate([
+  { $unwind: "$reviews" },
+  { $group: { _id: "$title", averageRating: { $avg: "$reviews.rating" } } },
+  { $match: { averageRating: { $gt: 4 } } },
+  { $project: { _id: 0, courseName: "$_id" } }
+])
+
+
+Retrieve all students who are enrolled in courses taught by "John Smith".
+db.Courses.aggregate([
+    {
+        $lookup:{
+        from:"Instructors",
+        localField:"instructor",
+        foreignField: "_id",
+        as:"instructorDetails"
+
+        }
+    },
+
+  { $match: { "instructorDetails.name": "John Smith" } },
+  {
+    $lookup: {
+      from: "Students",
+      localField: "students",
+      foreignField: "_id",
+      as: "studentDetails"
+    }
+  },
+  {
+    $project:{
+        _id:0,
+        instructor: "$instructorDetails.name",
+        studentNames:"$studentDetails.name"
+    }
+  }
+])
