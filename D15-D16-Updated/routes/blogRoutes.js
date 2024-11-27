@@ -1,12 +1,14 @@
 import express from 'express';
-import { createBlog, getBlogs, getBlogById } from '../controllers/blogController.js';
+import { createBlog, getBlogs, getBlogById, updateBlog, deleteBlog } from '../controllers/blogController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 
 const router = express.Router();
 //Routes
 router.post('/', authMiddleware,createBlog);
-router.post('/',getBlogs);
-router.post('/:id', getBlogById);
+router.get('/',getBlogs);
+router.get('/:id', getBlogById);
+router.put('/:id',authMiddleware,updateBlog);
+router.delete('/:id',authMiddleware,deleteBlog);
 
 export default router;
